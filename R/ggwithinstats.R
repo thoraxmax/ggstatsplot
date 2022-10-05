@@ -108,10 +108,7 @@ ggwithinstats <- function(data,
                             width = 0.2,
                             alpha = 0.5
                           ),
-                          violin.args = list(
-                            width = 0.5,
-                            alpha = 0.2
-                          ),
+                        
                           ggsignif.args = list(
                             textsize = 3,
                             tip_length = 0.01
@@ -199,8 +196,8 @@ ggwithinstats <- function(data,
 
   plot <- ggplot(data, aes({{ x }}, {{ y }}, group = .rowid)) +
     exec(geom_point, aes(color = {{ x }}), !!!point.args) +
-    exec(geom_boxplot, aes({{ x }}, {{ y }}), inherit.aes = FALSE, !!!boxplot.args) +
-    exec(geom_violin, aes({{ x }}, {{ y }}), inherit.aes = FALSE, !!!violin.args)
+    exec(geom_boxplot, aes({{ x }}, {{ y }}), inherit.aes = FALSE, !!!boxplot.args)
+    
 
   # add a connecting path only if there are only two groups
   if (test == "t" && point.path) plot <- plot + exec(geom_path, !!!point.path.args)
